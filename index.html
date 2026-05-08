@@ -3,106 +3,256 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detalles Flore C | Regala emociones</title>
-    <meta
-      name="description"
-      content="Detalles Flore C: arreglos florales y regalos personalizados para toda ocasión."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <title>FLORÉ C Detalles</title>
+    <meta name="description" content="Detalles florales elegantes con experiencia interactiva y atención por WhatsApp." />
+    <style>
+      :root {
+        --bg: #f8efea;
+        --bg-2: #f4e4dd;
+        --gold: #b58a2a;
+        --gold-dark: #8f6a1c;
+        --text: #5e4c3f;
+        --white: #fffdfb;
+        --shadow: 0 16px 45px rgba(83, 52, 20, 0.18);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Cormorant Garamond", "Times New Roman", serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 10%, #fff8f3 0%, transparent 40%),
+          radial-gradient(circle at 90% 0%, #f4ddd2 0%, transparent 35%),
+          linear-gradient(150deg, var(--bg), var(--bg-2));
+        min-height: 100vh;
+      }
+
+      .hero {
+        min-height: 95vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1.25rem;
+      }
+
+      .card {
+        background: rgba(255, 253, 251, 0.75);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(181, 138, 42, 0.22);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        max-width: 1000px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+      }
+
+      .logo-wrap {
+        display: grid;
+        place-items: center;
+        padding: 1rem;
+        animation: float 4s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+
+      .logo-svg {
+        width: min(360px, 92%);
+        height: auto;
+        filter: drop-shadow(0 8px 16px rgba(181, 138, 42, 0.25));
+      }
+
+      .content h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        letter-spacing: 0.12em;
+        color: var(--gold-dark);
+      }
+
+      .content p {
+        font-size: 1.15rem;
+        line-height: 1.6;
+        margin: 1rem 0 1.4rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      button, .btn {
+        border: none;
+        border-radius: 999px;
+        padding: 0.78rem 1.15rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(120deg, #c79f3c, #9f7821);
+        color: var(--white);
+        box-shadow: 0 10px 22px rgba(159, 120, 33, 0.35);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(181, 138, 42, 0.35);
+        color: var(--gold-dark);
+      }
+
+      button:hover, .btn:hover { transform: translateY(-2px); }
+
+      .features {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 0.65rem;
+      }
+
+      .chip {
+        background: rgba(255, 255, 255, 0.66);
+        border: 1px solid rgba(181, 138, 42, 0.25);
+        border-radius: 14px;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.96rem;
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 1.5rem;
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+        background: #3a2a12;
+        color: #fff;
+        border-radius: 999px;
+        padding: 0.7rem 1rem;
+        transition: all .35s ease;
+        z-index: 30;
+      }
+
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+
+      .whatsapp-fab {
+        position: fixed;
+        right: 1.2rem;
+        bottom: 1.2rem;
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        background: linear-gradient(140deg, #25d366, #10a746);
+        display: grid;
+        place-items: center;
+        box-shadow: 0 12px 26px rgba(16, 167, 70, 0.4);
+        z-index: 40;
+      }
+
+      .whatsapp-fab::after {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        border: 2px solid rgba(37, 211, 102, 0.3);
+        animation: pulse 1.8s infinite;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(0.9); opacity: 1; }
+        100% { transform: scale(1.25); opacity: 0; }
+      }
+
+      .whatsapp-fab svg { width: 30px; height: 30px; fill: white; }
+
+      @media (max-width: 700px) {
+        .card { padding: 1.5rem; }
+        .features { grid-template-columns: 1fr; }
+      }
+    </style>
   </head>
   <body>
-    <header class="header" id="inicio">
-      <nav class="nav container">
-        <a class="brand" href="#inicio">Detalles <span>Flore C</span></a>
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#catalogo">Catálogo</a></li>
-          <li><a href="#ocasiones">Ocasiones</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero" aria-label="Portada principal">
-        <div class="hero-overlay"></div>
-        <div class="container hero-grid">
-          <article class="hero-copy" data-animate>
-            <p class="kicker">Regala</p>
-            <h1>emociones que se recuerdan para siempre</h1>
-            <p>
-              Arreglos florales premium, desayunos sorpresa y detalles personalizados con
-              entrega puntual para cada momento especial.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="https://wa.me/51987654321?text=Hola%20Detalles%20Flore%20C%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer">Pedir por WhatsApp</a>
-              <a class="btn btn-secondary" href="#catalogo">Ver catálogo</a>
-            </div>
-          </article>
-          <div class="hero-card" data-animate>
-            <h2>Atención inteligente</h2>
-            <ul>
-              <li>✨ Recomendaciones por ocasión</li>
-              <li>🚚 Delivery programado</li>
-              <li>🎁 Personalización total</li>
-            </ul>
-            <div class="live-dot"><span></span>Asesor en línea</div>
-          </div>
+    <main class="hero">
+      <section class="card">
+        <div class="logo-wrap">
+          <svg class="logo-svg" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo FLORÉ C Detalles">
+            <defs>
+              <linearGradient id="goldGrad" x1="0" x2="1">
+                <stop offset="0%" stop-color="#d8ba68"/>
+                <stop offset="50%" stop-color="#b78d33"/>
+                <stop offset="100%" stop-color="#e7d39a"/>
+              </linearGradient>
+            </defs>
+            <circle cx="300" cy="220" r="160" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+            <g fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M300 365 C302 288 301 245 300 190"/>
+              <path d="M300 292 C264 260 228 230 206 188"/>
+              <path d="M300 275 C348 240 374 211 396 174"/>
+              <path d="M297 300 C345 305 384 322 420 346"/>
+              <path d="M302 309 C252 315 218 333 182 360"/>
+            </g>
+            <g fill="url(#goldGrad)">
+              <path d="M288 148 C296 117 332 112 340 148 C332 172 296 176 288 148Z"/>
+              <path d="M210 186 C216 160 246 155 253 183 C246 203 218 208 210 186Z"/>
+              <path d="M370 170 C378 143 411 140 420 168 C411 194 379 196 370 170Z"/>
+            </g>
+            <text x="300" y="530" text-anchor="middle" style="font-size:70px; letter-spacing:12px; fill:url(#goldGrad); font-family:serif;">FLORÉ C</text>
+            <text x="300" y="598" text-anchor="middle" style="font-size:62px; fill:url(#goldGrad); font-family: 'Brush Script MT', cursive;">Detalles</text>
+          </svg>
         </div>
-      </section>
-
-      <section class="features container" id="ocasiones">
-        <article class="feature" data-animate><h3>Cumpleaños</h3><p>Detalles vibrantes y personalizados.</p></article>
-        <article class="feature" data-animate><h3>Aniversarios</h3><p>Arreglos románticos y elegantes.</p></article>
-        <article class="feature" data-animate><h3>Nacimientos</h3><p>Regalos delicados para celebrar vida.</p></article>
-        <article class="feature" data-animate><h3>Corporativo</h3><p>Presentaciones premium para empresas.</p></article>
-      </section>
-
-      <section class="catalog container" id="catalogo">
-        <header>
-          <p class="section-kicker">Nuestros favoritos</p>
-          <h2>Catálogo de productos</h2>
-        </header>
-        <div class="products" id="productsGrid"></div>
-      </section>
-
-      <section class="testimonials" id="testimonios">
-        <div class="container">
-          <p class="section-kicker">Confianza real</p>
-          <h2>Lo que dicen nuestras clientas</h2>
-          <div class="testimonial-slider" id="testimonialSlider"></div>
+        <div class="content">
+          <h1>Arte Floral con Alma</h1>
+          <p>
+            Tu marca ahora luce más viva: diseño elegante, animaciones suaves y una experiencia
+            pensada para que tus clientes conecten con FLORÉ C desde el primer segundo.
+          </p>
+          <div class="actions">
+            <button class="btn btn-primary" id="explorarBtn">Explorar colecciones</button>
+            <button class="btn btn-secondary" id="sorpresaBtn">Ver sorpresa floral</button>
+          </div>
+          <div class="features">
+            <div class="chip">✨ Interfaz más dinámica</div>
+            <div class="chip">📱 Botón flotante WhatsApp</div>
+            <div class="chip">🌸 Identidad visual dorada</div>
+            <div class="chip">⚡ UX rápida y clara</div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer" id="contacto">
-      <div class="container footer-grid">
-        <div>
-          <h3>Detalles Flore C</h3>
-          <p>Diseñamos experiencias memorables para toda ocasión.</p>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <p>+51 987 654 321</p>
-          <p>@florec.detalles</p>
-          <p>Lima, Perú</p>
-        </div>
-      </div>
-    </footer>
-
-    <a class="whatsapp-float" href="https://wa.me/51987654321?text=Hola%20Detalles%20Flore%20C%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer" aria-label="Solicitar pedido por WhatsApp">
-      <span>💬</span>
-      <small>¡Escríbenos!</small>
+    <a class="whatsapp-fab" href="https://wa.me/5210000000000" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 3C8.82 3 3 8.72 3 15.78c0 2.51.74 4.85 2.02 6.83L3 29l6.6-1.94A13.1 13.1 0 0 0 16 28.56c7.18 0 13-5.72 13-12.78S23.18 3 16 3Zm0 23.41c-2.02 0-3.98-.54-5.67-1.56l-.4-.24-3.92 1.15 1.2-3.78-.26-.42a11.14 11.14 0 0 1-1.74-5.78C5.21 9.6 10.02 5 16 5c5.98 0 10.79 4.6 10.79 10.78S21.98 26.4 16 26.4Zm5.96-8.34c-.32-.16-1.88-.92-2.17-1.02-.29-.1-.5-.16-.7.16-.2.32-.8 1.02-.98 1.23-.18.2-.36.24-.67.08-.32-.16-1.33-.48-2.53-1.54-.93-.82-1.55-1.84-1.73-2.16-.18-.32-.02-.49.14-.64.14-.14.32-.36.48-.54.16-.18.22-.32.32-.54.1-.22.05-.4-.02-.56-.08-.16-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6c-.2 0-.54.08-.82.4-.29.32-1.08 1.05-1.08 2.56s1.1 2.98 1.25 3.18c.16.2 2.16 3.38 5.33 4.61.75.3 1.34.48 1.8.62.76.24 1.46.2 2 .12.61-.1 1.88-.77 2.15-1.52.27-.74.27-1.38.2-1.52-.07-.14-.29-.22-.61-.38Z"/>
+      </svg>
     </a>
 
-    <script src="script.js" defer></script>
+    <div class="toast" id="toast"></div>
+
+    <script>
+      const toast = document.getElementById('toast');
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      };
+
+      document.getElementById('explorarBtn').addEventListener('click', () => {
+        showToast('Próximamente: catálogo interactivo ✨');
+      });
+
+      document.getElementById('sorpresaBtn').addEventListener('click', () => {
+        document.body.style.background = 'linear-gradient(135deg, #fef4ee, #f6dfd3, #f0d7c7)';
+        showToast('¡Sorpresa floral activada! 🌷');
+      });
+    </script>
   </body>
 </html>
